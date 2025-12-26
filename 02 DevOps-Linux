@@ -1,0 +1,526 @@
+# 🐧 Linux for DevOps
+
+## 📌 Commands + Real-World Scenarios + Points to Remember
+
+> **Focus:** Interview-ready + Production-ready + Daily DevOps usage
+
+---
+
+## 1️⃣ File & Directory Management
+
+### 🔹 Commands
+
+* `ls`, `ls -l`, `ls -a`
+* `pwd`, `cd`
+* `mkdir`, `mkdir -p`
+* `rm`, `rm -rf`
+* `cp`, `cp -r`
+* `mv`, `touch`, `stat`
+
+### 🔹 DevOps Scenarios
+
+* Create release/version directories for applications
+* Clean old builds or logs
+* Move configuration files during deployments
+* Verify file timestamps and ownership before release
+
+### 👉 Scenario
+
+```bash
+mkdir -p /opt/app/releases/v1
+cp app.jar /opt/app/releases/v1/
+```
+
+### 📌 Points to Remember
+
+* `rm -rf` is **dangerous** → always double-check path
+* `mkdir -p` avoids errors if parent folders don’t exist
+* Use `/opt` or `/var` for application data, not `/home`
+* Always validate ownership with `ls -l`
+
+---
+
+## 2️⃣ File Viewing & Debugging
+
+### 🔹 Commands
+
+* `cat`, `less`, `more`
+* `head`, `tail`
+* `tail -f`
+* `watch`
+
+### 🔹 DevOps Scenarios
+
+* Check logs after deployment
+* Monitor logs during incidents
+* Debug pipeline or service failures
+
+### 👉 Scenario
+
+```bash
+tail -f /var/log/nginx/error.log
+```
+
+### 📌 Points to Remember
+
+* Prefer `less` over `cat` for large files
+* `tail -f` is essential during live debugging
+* `watch` helps monitor command output repeatedly
+
+---
+
+## 3️⃣ File Search & Text Processing 🔥 (Most Important)
+
+### 🔹 Commands
+
+* `find`, `locate`
+* `grep`
+* `awk`, `sed`
+* `cut`, `sort`, `uniq`, `wc`
+* `xargs`
+
+### 🔹 DevOps Scenarios
+
+* Find errors in massive log files
+* Parse CI/CD pipeline logs
+* Extract IPs, ports, usernames, error codes
+
+### 👉 Scenario
+
+```bash
+grep -i error /var/log/app.log
+```
+
+### 👉 Advanced
+
+```bash
+grep "ERROR" app.log | awk '{print $5}' | sort | uniq -c
+```
+
+### 📌 Points to Remember
+
+* `grep` + `awk` = **powerful log analysis**
+* `find` is preferred over `locate` in production
+* `xargs` helps process output in bulk
+* Text processing is **core DevOps skill**
+
+---
+
+## 4️⃣ File Permissions & Ownership
+
+### 🔹 Commands
+
+* `chmod`
+* `chown`
+* `chgrp`
+* `umask`
+
+### 🔹 DevOps Scenarios
+
+* Fix *Permission Denied* issues
+* Secure secrets and config files
+* Resolve CI/CD execution failures
+
+### 👉 Scenario
+
+```bash
+chmod 755 deploy.sh
+chown ec2-user:ec2-user deploy.sh
+```
+
+### 📌 Points to Remember
+
+* Executable scripts need `+x`
+* CI/CD failures are often permission-related
+* Never give `777` in production
+* Understand numeric vs symbolic permissions
+
+---
+
+## 5️⃣ User & Group Management
+
+### 🔹 Commands
+
+* `useradd`, `usermod`, `userdel`
+* `groupadd`
+* `passwd`
+* `id`, `whoami`
+
+### 🔹 DevOps Scenarios
+
+* Create application users
+* Run services with non-root users
+* Configure Jenkins/Docker users
+
+### 👉 Scenario
+
+```bash
+useradd appuser
+passwd appuser
+```
+
+### 📌 Points to Remember
+
+* Avoid running apps as `root`
+* Use groups for permission management
+* `/etc/passwd` ≠ password file (passwords in `/etc/shadow`)
+
+---
+
+## 6️⃣ Package Management
+
+### 🔹 Commands
+
+* Ubuntu/Debian: `apt install`, `apt update`, `apt remove`
+* RHEL/Amazon: `yum install`, `dnf install`, `yum update`
+
+### 🔹 DevOps Scenarios
+
+* Install Docker, Java, Nginx
+* Patch servers
+* Setup CI/CD build agents
+
+### 👉 Scenario
+
+```bash
+yum install docker -y
+systemctl start docker
+```
+
+### 📌 Points to Remember
+
+* Always update repos before install
+* Version mismatch can break apps
+* Know package manager per OS
+
+---
+
+## 7️⃣ Process Management
+
+### 🔹 Commands
+
+* `ps`, `top`, `htop`
+* `kill`, `pkill`
+* `nice`, `renice`
+* `jobs`, `bg`, `fg`
+
+### 🔹 DevOps Scenarios
+
+* Kill stuck services
+* Debug high CPU/memory usage
+* Manage background jobs
+
+### 👉 Scenario
+
+```bash
+ps aux | grep java
+kill -9 1234
+```
+
+### 📌 Points to Remember
+
+* Avoid `kill -9` unless required
+* `top` gives live system view
+* Understand zombie & orphan processes
+
+---
+
+## 8️⃣ Networking & Ports
+
+### 🔹 Commands
+
+* `ip a`, `ip r`
+* `ss -tuln`, `netstat -tuln`
+* `ping`
+* `curl`, `wget`
+* `telnet`, `nc`
+
+### 🔹 DevOps Scenarios
+
+* Application not reachable
+* Port conflicts
+* API health checks
+
+### 👉 Scenario
+
+```bash
+ss -tuln | grep 8080
+curl http://localhost:8080/health
+```
+
+### 📌 Points to Remember
+
+* `ss` is faster than `netstat`
+* `curl` is mandatory for DevOps
+* Always check ports before deployment
+
+---
+
+## 9️⃣ Disk & Storage
+
+### 🔹 Commands
+
+* `df -h`
+* `du -sh`
+* `lsblk`
+* `mount`, `umount`
+* `free -m`
+
+### 🔹 DevOps Scenarios
+
+* Disk full alerts
+* Log growth issues
+* App crashes due to no space
+
+### 👉 Scenario
+
+```bash
+du -sh /var/log/*
+```
+
+### 📌 Points to Remember
+
+* Disk full = app failure
+* Logs usually consume `/var`
+* Monitor disk before scaling
+
+---
+
+## 🔟 Log Management
+
+### 🔹 Commands
+
+* `journalctl`
+* `journalctl -u service`
+* `logrotate`
+
+### 🔹 DevOps Scenarios
+
+* Service crash analysis
+* Boot issue debugging
+* Automatic log rotation
+
+### 👉 Scenario
+
+```bash
+journalctl -u docker --since today
+```
+
+### 📌 Points to Remember
+
+* `journalctl` replaces `/var/log/messages`
+* Logs are first place to debug failures
+* Configure `logrotate` in production
+
+---
+
+## 1️⃣1️⃣ Service Management (systemd)
+
+### 🔹 Commands
+
+* `systemctl start|stop|restart`
+* `systemctl status`
+* `systemctl enable`
+
+### 🔹 DevOps Scenarios
+
+* Restart failed services
+* Enable app on boot
+* CI/CD restart after deployment
+
+### 👉 Scenario
+
+```bash
+systemctl restart nginx
+systemctl enable nginx
+```
+
+### 📌 Points to Remember
+
+* Always check `status` after restart
+* Services must be enabled for reboot survival
+
+---
+
+## 1️⃣2️⃣ Environment Variables
+
+### 🔹 Commands
+
+* `env`, `printenv`
+* `export`
+* `source`
+
+### 🔹 DevOps Scenarios
+
+* App configuration
+* Secrets & credentials
+* Pipeline variables
+
+### 👉 Scenario
+
+```bash
+export DB_HOST=localhost
+source ~/.bashrc
+```
+
+### 📌 Points to Remember
+
+* Environment variables are process-specific
+* Never hardcode secrets
+* Use `.bashrc` for persistence
+
+---
+
+## 1️⃣3️⃣ Shell Scripting (Automation Core)
+
+### 🔹 Concepts
+
+* `if`, `for`, `while`
+* Exit codes `$?`
+* Functions
+
+### 🔹 DevOps Scenarios
+
+* Server bootstrap
+* Automated deployments
+* CI/CD scripts
+
+### 👉 Scenario
+
+```bash
+if systemctl is-active nginx
+then
+  echo "Nginx is running"
+else
+  systemctl start nginx
+fi
+```
+
+### 📌 Points to Remember
+
+* Scripts = DevOps backbone
+* Always handle failures
+* Add logging in scripts
+
+---
+
+## 1️⃣4️⃣ Cron Jobs
+
+### 🔹 Commands
+
+* `crontab -e`
+* `crontab -l`
+
+### 🔹 DevOps Scenarios
+
+* Backups
+* Log cleanup
+* Health checks
+
+### 👉 Scenario
+
+```bash
+0 2 * * * /opt/scripts/backup.sh
+```
+
+### 📌 Points to Remember
+
+* Cron runs without user environment
+* Always use absolute paths
+* Redirect output to logs
+
+---
+
+## 1️⃣5️⃣ SSH & Remote Access
+
+### 🔹 Commands
+
+* `ssh`
+* `scp`
+* `rsync`
+* `ssh-keygen`
+
+### 🔹 DevOps Scenarios
+
+* Access cloud servers
+* Copy artifacts
+* Secure access using keys
+
+### 👉 Scenario
+
+```bash
+ssh -i key.pem ec2-user@server-ip
+```
+
+### 📌 Points to Remember
+
+* Prefer key-based authentication
+* Never share private keys
+* Use `rsync` for faster sync
+
+---
+
+## 1️⃣6️⃣ Performance Monitoring
+
+### 🔹 Commands
+
+* `top`, `htop`
+* `vmstat`, `iostat`
+* `sar`
+* `uptime`
+
+### 🔹 DevOps Scenarios
+
+* CPU spikes
+* Memory leaks
+* Scaling decisions
+
+### 👉 Scenario
+
+```bash
+uptime
+```
+
+### 📌 Points to Remember
+
+* Load average ≠ CPU %
+* Check trends, not snapshots
+* Monitoring prevents outages
+
+---
+
+## 1️⃣7️⃣ Containers & Kubernetes (Linux Internals)
+
+### 🔹 Commands
+
+* `lsns`
+* `mount`
+* `free`
+* `ps`
+
+### 🔹 DevOps Scenarios
+
+* Container resource issues
+* Kubernetes node debugging
+* Memory/CPU limit analysis
+
+### 📌 Points to Remember
+
+* Containers rely on Linux kernel
+* Cgroups & namespaces are core
+* Node issues = pod issues
+
+---
+
+## 🔥 Most Common Production Issues (Quick Recall)
+
+| Issue             | Commands           |
+| ----------------- | ------------------ |
+| Port conflict     | `ss -tuln`, `kill` |
+| Permission denied | `chmod`, `chown`   |
+| Disk full         | `df -h`, `du -sh`  |
+| App crash         | `journalctl`       |
+| CPU high          | `top`, `ps aux`    |
+| Service down      | `systemctl status` |
+
+---
