@@ -6,10 +6,6 @@
 
 ![Image](https://substackcdn.com/image/fetch/%24s_%21g3db%21%2Cf_auto%2Cq_auto%3Agood%2Cfl_progressive%3Asteep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4a38175b-11e8-40ae-879c-ab3ce2027089_2008x1252.png)
 
-![Image](https://upload.wikimedia.org/wikipedia/commons/c/c9/Client-server-model.svg)
-
-![Image](https://www.researchgate.net/publication/369358390/figure/fig1/AS%3A11431281127810255%401679180216268/HTTP-request-and-response-flow.png)
-
 ![Image](https://i0.wp.com/www.ewebguru.com/web-hosting-blog/wp-content/uploads/2020/01/What-is-a-Web-Server.jpg?resize=800%2C538\&ssl=1)
 
 ### 🔹 What is the **Internet**?
