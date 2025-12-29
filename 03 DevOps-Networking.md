@@ -129,6 +129,14 @@ Client (HTML / JSON / Data)
 
 ## 🌐 OSI Model vs TCP/IP Model (Tabular Comparison)
 
+![Image](https://afteracademy.com/images/what-is-the-tcp-ip-model-and-how-it-works-tcp-ip-model-five-layers-195bdaa7116cd850.jpg)
+
+![Image](https://cdn2.hubspot.net/hubfs/2954816/The%207%20Layers%20of%20OSI.png)
+
+![Image](https://docs.aws.amazon.com/images/vpc/latest/userguide/images/how-it-works.png)
+
+![Image](https://cloudnativenow.com/wp-content/uploads/2023/12/Screenshot-2023-12-03-at-8.53.56-PM.png)
+
 ![Image](https://bluecatnetworks.com/wp-content/uploads/2022/08/The-7-layers-of-the-OSI-model_rev1-1.jpg)
 
 ![Image](https://docs.oracle.com/cd/E26505_01/html/E27061/figures/ipov.fig88.png)
@@ -164,16 +172,6 @@ Client (HTML / JSON / Data)
 | Network       | Internet         |
 | Data Link     | Network Access   |
 | Physical      | Network Access   |
-
----
-
-![Image](https://afteracademy.com/images/what-is-the-tcp-ip-model-and-how-it-works-tcp-ip-model-five-layers-195bdaa7116cd850.jpg)
-
-![Image](https://cdn2.hubspot.net/hubfs/2954816/The%207%20Layers%20of%20OSI.png)
-
-![Image](https://docs.aws.amazon.com/images/vpc/latest/userguide/images/how-it-works.png)
-
-![Image](https://cloudnativenow.com/wp-content/uploads/2023/12/Screenshot-2023-12-03-at-8.53.56-PM.png)
 
 ---
 
