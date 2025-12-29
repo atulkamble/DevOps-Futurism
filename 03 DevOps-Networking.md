@@ -127,6 +127,45 @@ Client (HTML / JSON / Data)
 
 ---
 
+## 🌐 OSI Model vs TCP/IP Model (Tabular Comparison)
+
+![Image](https://bluecatnetworks.com/wp-content/uploads/2022/08/The-7-layers-of-the-OSI-model_rev1-1.jpg)
+
+![Image](https://docs.oracle.com/cd/E26505_01/html/E27061/figures/ipov.fig88.png)
+
+![Image](https://www.networkstraining.com/wp-content/uploads/2022/09/osi-tcpip.png)
+
+| **Feature**                       | **OSI Model**                                                               | **TCP/IP Model**                                  |
+| --------------------------------- | --------------------------------------------------------------------------- | ------------------------------------------------- |
+| **Full Form**                     | Open Systems Interconnection                                                | Transmission Control Protocol / Internet Protocol |
+| **Developed By**                  | ISO (International Organization for Standardization)                        | DARPA (US Department of Defense)                  |
+| **Number of Layers**              | **7 Layers**                                                                | **4 Layers**                                      |
+| **Layer Names**                   | Application, Presentation, Session, Transport, Network, Data Link, Physical | Application, Transport, Internet, Network Access  |
+| **Concept vs Practical**          | Conceptual / Reference model                                                | Practical / Implemented model                     |
+| **Protocol Dependency**           | Protocol-independent                                                        | Protocol-dependent                                |
+| **Layer Separation**              | Very strict separation of layers                                            | Less strict; some layers are combined             |
+| **Session & Presentation Layers** | Separate layers exist                                                       | Included in Application layer                     |
+| **Network Layer**                 | Supports both connection-oriented & connectionless services                 | Supports only connectionless (IP)                 |
+| **Transport Layer**               | No specific protocol defined                                                | Uses TCP (reliable) & UDP (unreliable)            |
+| **Error Handling**                | Data Link & Transport layers                                                | Transport layer                                   |
+| **Usage**                         | Used for learning, teaching, and understanding networking                   | Used in real-world networking & Internet          |
+| **Example Protocols**             | Conceptual only                                                             | HTTP, HTTPS, FTP, TCP, UDP, IP, ICMP              |
+
+---
+
+## 🧠 Layer Mapping (OSI → TCP/IP)
+
+| **OSI Layer** | **TCP/IP Layer** |
+| ------------- | ---------------- |
+| Application   | Application      |
+| Presentation  | Application      |
+| Session       | Application      |
+| Transport     | Transport        |
+| Network       | Internet         |
+| Data Link     | Network Access   |
+| Physical      | Network Access   |
+
+---
 
 ![Image](https://afteracademy.com/images/what-is-the-tcp-ip-model-and-how-it-works-tcp-ip-model-five-layers-195bdaa7116cd850.jpg)
 
