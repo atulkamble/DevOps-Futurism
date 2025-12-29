@@ -1,7 +1,5 @@
 ## 🌐 DevOps Networking Prerequisites
 
-**(Concepts • Definitions • Points to Remember)**
-
 ![Image](https://substackcdn.com/image/fetch/%24s_%21F636%21%2Cf_auto%2Cq_auto%3Agood%2Cfl_progressive%3Asteep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa29b682c-cff6-4ed3-a085-4347eb020b06_1906x1150.png)
 
 ![Image](https://afteracademy.com/images/what-is-the-tcp-ip-model-and-how-it-works-tcp-ip-model-five-layers-195bdaa7116cd850.jpg)
