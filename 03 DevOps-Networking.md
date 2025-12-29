@@ -2,6 +2,136 @@
 
 ![Image](https://substackcdn.com/image/fetch/%24s_%21F636%21%2Cf_auto%2Cq_auto%3Agood%2Cfl_progressive%3Asteep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa29b682c-cff6-4ed3-a085-4347eb020b06_1906x1150.png)
 
+## 🌐 Internet – Server – Client 
+
+![Image](https://substackcdn.com/image/fetch/%24s_%21g3db%21%2Cf_auto%2Cq_auto%3Agood%2Cfl_progressive%3Asteep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4a38175b-11e8-40ae-879c-ab3ce2027089_2008x1252.png)
+
+![Image](https://upload.wikimedia.org/wikipedia/commons/c/c9/Client-server-model.svg)
+
+![Image](https://www.researchgate.net/publication/369358390/figure/fig1/AS%3A11431281127810255%401679180216268/HTTP-request-and-response-flow.png)
+
+![Image](https://i0.wp.com/www.ewebguru.com/web-hosting-blog/wp-content/uploads/2020/01/What-is-a-Web-Server.jpg?resize=800%2C538\&ssl=1)
+
+### 🔹 What is the **Internet**?
+
+The **Internet** is a global network of interconnected computers and servers that communicate using standard protocols (TCP/IP).
+
+👉 Think of it as a **highway** that connects millions of servers and clients worldwide.
+
+---
+
+### 🔹 What is a **Client**?
+
+A **client** is any device or application that **requests** data or services.
+
+**Examples:**
+
+* Web browser (Chrome, Firefox)
+* Mobile apps
+* `curl`, `Postman`
+* Laptop, phone, tablet
+
+📌 Client role:
+
+* Sends **request**
+* Receives **response**
+* Does NOT usually store or process large data
+
+---
+
+### 🔹 What is a **Server**?
+
+A **server** is a machine or service that **provides** data or functionality to clients.
+
+**Examples:**
+
+* Web server (Apache, Nginx)
+* Application server (Node.js, Java, .NET)
+* Database server (MySQL, PostgreSQL)
+
+📌 Server role:
+
+* Listens on a **port**
+* Processes requests
+* Sends responses
+* Runs 24×7
+
+---
+
+### 🔁 How Client–Server Communication Works
+
+```
+Client (Browser)
+   |
+   |  HTTP/HTTPS Request
+   v
+Internet (DNS + Routing)
+   |
+   v
+Server (Web/App Server)
+   |
+   |  HTTP/HTTPS Response
+   v
+Client (HTML / JSON / Data)
+```
+
+**Step-by-step:**
+
+1. Client enters a URL (e.g., `www.example.com`)
+2. DNS converts domain → IP address
+3. Client sends request to server IP & port
+4. Server processes request
+5. Server sends response
+6. Client displays result
+
+---
+
+### 🔹 Common Protocols Used
+
+| Protocol     | Purpose                   |
+| ------------ | ------------------------- |
+| HTTP / HTTPS | Web communication         |
+| TCP          | Reliable data transfer    |
+| UDP          | Fast, connectionless data |
+| FTP / SFTP   | File transfer             |
+| SMTP         | Email sending             |
+| DNS          | Name resolution           |
+
+---
+
+### 🔹 Common Ports
+
+| Service | Port |
+| ------- | ---- |
+| HTTP    | 80   |
+| HTTPS   | 443  |
+| SSH     | 22   |
+| FTP     | 21   |
+| DNS     | 53   |
+
+---
+
+### 🔹 Real-World Example
+
+📱 You open **google.com**:
+
+* **Client**: Your browser
+* **Internet**: ISP + DNS + routers
+* **Server**: Google web servers
+* **Response**: Web page content
+
+---
+
+### 🔹 Why This is Important for DevOps 🚀
+
+* CI/CD pipelines talk to servers
+* Kubernetes pods are clients & servers
+* Load balancers sit between clients & servers
+* Cloud apps are fully client-server based
+
+---
+
+
 ![Image](https://afteracademy.com/images/what-is-the-tcp-ip-model-and-how-it-works-tcp-ip-model-five-layers-195bdaa7116cd850.jpg)
 
 ![Image](https://cdn2.hubspot.net/hubfs/2954816/The%207%20Layers%20of%20OSI.png)
