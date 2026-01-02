@@ -1,14 +1,3 @@
-Below is a **clean, consolidated, production-ready UPDATE** of your document, suitable **as-is** for:
-
-* ✅ GitHub `README.md`
-* ✅ Classroom / lab handout
-* ✅ Corporate Terraform demo
-* ✅ Azure IaC reference project
-
-Content is **validated, deduplicated, ordered, and professional**—without changing your working code.
-
----
-
 # 🚀 Azure VM Deployment using HashiCorp Terraform on Microsoft Azure
 
 This project demonstrates **end-to-end Infrastructure as Code (IaC)** using **Terraform** to provision a **Linux Virtual Machine on Azure**, including secure networking and SSH automation.
@@ -435,13 +424,3 @@ terraform.tfstate*
 ✔ Interview & portfolio project
 
 ---
-
-If you want next, I can:
-
-* Convert this into **Terraform modules**
-* Add **remote backend (Azure Storage)**
-* Create **GitHub Actions CI/CD**
-* Produce **exam-ready lab PDF**
-* Scale this to **50-VM enterprise design**
-
-Just tell me 👍
