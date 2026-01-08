@@ -1,18 +1,19 @@
 # 🚀 Jenkins Server Setup on Azure VM (4GB RAM)
 
-This document provides **step-by-step instructions** to install and configure **Jenkins on an Azure Linux VM**, along with required tools and a sample **Jenkins Declarative Pipeline**.
+This document provides **step-by-step instructions** to install and configure **Jenkins on an Azure Linux VM**, along with required tools, a sample **Jenkins Declarative Pipeline**, and common **troubleshooting steps**.
 
 ---
 
 ## 🖥️ Azure VM Prerequisites
 
-| Component | Details                            |
-| --------- | ---------------------------------- |
-| VM Size   | 4 GB RAM (Recommended for Jenkins) |
-| OS        | Ubuntu Server (20.04 / 22.04 LTS)  |
-| Java      | JDK 21 (or 17 supported)           |
-| Network   | NSG Port **8080** open (Inbound)   |
-| User      | `atul`                             |
+| Component | Details                             |
+| --------- | ----------------------------------- |
+| VM Size   | 4 GB RAM (Recommended for Jenkins)  |
+| OS        | Ubuntu Server 20.04 / 22.04 LTS     |
+| Java      | JDK 21 (JDK 17 also supported)      |
+| Network   | NSG – Inbound Port **8080** allowed |
+| User      | `atul`                              |
+| Disk      | Minimum **30 GB** recommended       |
 
 ---
 
@@ -21,7 +22,7 @@ This document provides **step-by-step instructions** to install and configure **
 ```bash
 cd Downloads
 chmod 400 jenkins.pem
-ssh atul@135.235.138.29
+ssh atul@<VM-PUBLIC-IP>
 ```
 
 ---
@@ -41,7 +42,7 @@ sudo apt install fontconfig openjdk-21-jre -y
 java -version
 ```
 
-> Jenkins supports **Java 17 & 21** (LTS versions)
+> ✅ Jenkins officially supports **Java 17 and Java 21 (LTS)**
 
 ---
 
@@ -113,7 +114,7 @@ sudo systemctl status jenkins
 
 ## 🌐 Access Jenkins Web UI
 
-Open browser:
+Open your browser:
 
 ```
 http://<VM-PUBLIC-IP>:8080
@@ -161,8 +162,9 @@ pipeline {
 
 ## ✅ Best Practices
 
-* Use **Java 17/21 only** for Jenkins
-* Increase disk size (minimum **30 GB** recommended)
+* Use **Java 17 or Java 21 only**
+* Allocate **4 GB RAM minimum** for stable Jenkins
+* Increase OS disk to **30–50 GB**
 * Add Jenkins user to Docker group:
 
 ```bash
@@ -173,34 +175,74 @@ sudo systemctl restart jenkins
 * Secure Jenkins using:
 
   * Credentials Manager
-  * Role-Based Authorization
-  * HTTPS (Azure Load Balancer / Nginx)
+  * Role-Based Authorization Strategy
+  * HTTPS (Nginx Reverse Proxy / Azure Load Balancer)
+
+---
+
+## 🛠️ Troubleshooting
+
+### ❌ Docker Permission Denied (Jenkins / User)
+
+```bash
+sudo usermod -aG docker $USER
+newgrp docker
+```
+
+For Jenkins:
+
+```bash
+sudo usermod -aG docker jenkins
+sudo systemctl restart jenkins
+```
+
+---
+
+### 🐳 Docker Buildx Issues
+
+Build multi-arch image:
+
+```bash
+docker buildx build --platform linux/amd64 \
+  -t docker.io/atuljkamble/pythonhelloworld:latest .
+```
+
+Install buildx if missing:
+
+```bash
+sudo apt install docker-buildx -y
+```
+
+Verify Docker:
+
+```bash
+docker ps
+docker buildx version
+```
+
+---
+
+### ❌ Jenkins Not Opening on Port 8080
+
+Check:
+
+* Azure NSG → Inbound rule for **8080**
+* Jenkins service status
+
+```bash
+sudo systemctl status jenkins
+```
 
 ---
 
 ## 📌 Summary
 
-✔ Azure VM Jenkins Setup
-✔ Java + Git + Docker + Maven Installed
-✔ Jenkins Running on Port 8080
-✔ Pipeline Ready for Dev → Staging → Prod
+✔ Jenkins installed on Azure VM
+✔ Java, Git, Docker, Maven configured
+✔ Jenkins accessible on port **8080**
+✔ Declarative pipeline ready (Dev → Staging → Prod)
+✔ Common Docker & Jenkins issues covered
 
 ---
 
 **Built with ❤️ by Atul Kamble**
-
-
-✅ **Jenkins Server on Azure VM – Document Created**
-
-I’ve created a **clean, production-ready Jenkins setup document** in the canvas with:
-
-* Azure VM prerequisites (4GB RAM, NSG 8080)
-* SSH access steps
-* Java 21 installation (Jenkins-compatible)
-* Git, Docker, Maven setup
-* Official Jenkins repo + installation
-* Jenkins service management
-* Web UI access & initial password
-* **Declarative Jenkins Pipeline example**
-* Best practices (Docker group, security tips)
-* Professional formatting (Markdown-ready, GitHub-friendly)
