@@ -1,7 +1,7 @@
 # Test
 ---
 ```
-**Kindly complete the following test:**
+**Kindly complete the following DevOps/Azure DevOps Test:**
 
 ⏱ **Duration:** 60 Minutes
 🔗 **Test Link:** [https://forms.office.com/r/AgsM9BdUFy](https://forms.office.com/r/AgsM9BdUFy)
